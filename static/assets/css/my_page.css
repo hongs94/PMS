@@ -1,0 +1,583 @@
+h3 {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    padding: 0 25px;
+    margin: 0;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card {
+    min-height: 170px;
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-description {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / 2;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-image {
+    width: 80px;
+    height: 80px;
+    background: #ccc;
+    border-radius: 10px;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.user-details h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.user-details p {
+    margin: 0.2rem 0 0;
+    color: #555;
+}
+
+.modify_btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.modify_btn:hover {
+    opacity: 0.8;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 0.5rem 0 0.5rem;
+}
+
+.user-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.stat-left,
+.stat-center .stat-right {
+    text-align: left;
+    flex: 2;
+}
+
+.stat-center {
+    flex: 1;
+    margin-bottom: 50px;
+}
+
+.stat-right {
+    text-align: right;
+    flex: 3;
+}
+
+.stat-left strong,
+.stat-right strong {
+    text-align: center;
+    display: block;
+    font-size: 1.6rem;
+    color: #007aff;
+    margin-top: 1rem;
+}
+
+.stat-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8rem;
+}
+
+.stat-right div {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.stat-left span,
+.stat-right span,
+.stat-center span {
+    font-size: 0.9rem;
+}
+
+.stat-right span {
+    color: #666;
+}
+
+.schedule ul {
+    max-height: 120px;
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.schedule li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.schedule li>span {
+    flex: 1;
+}
+
+.schedule .red {
+    color: red;
+}
+
+.schedule .purple {
+    color: #FF0B9D;
+}
+
+.schedule .text {
+    margin-left: 10%;
+}
+
+.schedule button {
+    float: right;
+    padding: 4px 8px;
+}
+
+.tasks {
+    min-height: 330px;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.task-actions button {
+    margin-left: 0.5rem;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.tasks table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    color: #808080;
+}
+
+/* 헤더 행은 고정된 테이블 구조 */
+.tasks thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* tbody는 스크롤 가능하게 */
+.tasks tbody {
+    display: block;
+    width: 100%;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+/* tbody 안 tr도 table로 유지해야 열 정렬 맞음 */
+.tasks tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* 셀 스타일 (thead + tbody 공통) */
+.tasks th,
+.tasks td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* 열 너비 직접 지정: 열 개수에 따라 비율 조정 */
+.tasks th:nth-child(1),
+.tasks td:nth-child(1) {
+    width: 7%;
+}
+
+.tasks th:nth-child(2),
+.tasks td:nth-child(2) {
+    width: 20%;
+}
+
+.todo_content {
+    width: 100%;
+}
+
+.tasks td:nth-child(2) {
+    color: #808080;
+    font-size: 0.8rem;
+}
+
+.tasks th:nth-child(3),
+.tasks td:nth-child(3) {
+    width: 25%;
+}
+
+.tasks th:nth-child(4),
+.tasks td:nth-child(4) {
+    width: 25%;
+}
+
+
+/* 공통 원 스타일 */
+.status .dot {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* 상태별 색상 */
+.status.done .dot {
+    background-color: #04B855;
+}
+
+.status.inprogress .dot {
+    background-color: #FF4602;
+}
+
+.status.todo .dot {
+    background-color: #FFEA02;
+}
+
+.task-add {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.task-add input[type="text"],
+.task-add input[type="date"] {
+    flex: 2;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.task-add input[type="date"] {
+    flex: 1;
+}
+
+.task-add button {
+    padding: 0.4rem 1rem;
+}
+
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* 전체 탭 감싸는 컨테이너 */
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+/* 탭 하나 (제목 + 내용 포함) */
+.tab {
+    flex: 1;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 300px;
+}
+
+/* 탭 제목 */
+.tab-header {
+    background: #eee;
+    padding: 0.6rem 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    transition: background 0.2s, color 0.2s;
+}
+
+.tab.active .tab-header {
+    background: #007aff;
+    color: white;
+}
+
+/* 탭 내용 */
+.tab-content {
+    padding: 1rem;
+    display: block;
+}
+
+.tab:not(.active) .tab-content {
+    display: none;
+}
+
+/* 프로젝트 카드 스타일 그대로 유지 */
+.project {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.project-tab-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.project-tabs {
+    margin: 0 auto;
+    display: flex;
+    border-bottom: none;
+    padding: 0.5rem 0 0 0;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 8px 8px 0 0;
+    background-color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    color: #666;
+}
+
+.tab-btn:hover {
+    opacity: 0.8;
+}
+
+.tab-btn.active {
+    background-color: #e0e0e0;
+    color: #007aff;
+}
+
+.project-wrapper {
+    margin: 0 auto;
+    padding: 1rem;
+    background: #e0e0e0;
+    border-radius: 0 10px 10px 10px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.project-tab-content {
+    display: none;
+}
+
+.project-tab-content.active {
+    display: block;
+}
+
+.project-header-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-name {
+    background: transparent;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem 0.5rem 0.6rem;
+}
+
+.project-name:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.project-name.active {
+    background: #fff;
+    border-radius: 6px 6px 0 0;
+}
+
+.project-body {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 0 10px 10px 10px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.project-list li {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 2fr 1fr auto;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.task-id {
+    color: #808080;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: 0.4rem;
+}
+
+.status .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status.done .dot {
+    background-color: green;
+}
+
+.status.inprogress .dot {
+    background-color: orange;
+}
+
+.task-date {
+    font-weight: 500;
+}
+
+.task-date-color {
+    color: green;
+}
+
+.btn-blue,
+.btn-gray {
+    padding: 0.2rem;
+}
+
+.btn.btn-gray {
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    .task-add {
+        flex-direction: column;
+        position: static;
+        margin-top: 1rem;
+    }
+
+    .task-add input[type="text"],
+    .task-add input[type="date"],
+    .task-add button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .tab-header {
+        flex-wrap: wrap;
+    }
+
+    .project-list li {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        row-gap: 0.4rem;
+    }
+
+    .project-list li>*:nth-child(3),
+    .project-list li>*:nth-child(4),
+    .project-list li>*:nth-child(5) {
+        grid-column: span 2;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .status {
+        font-size: 0.85rem;
+    }
+
+    .tab {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .project-list li {
+        font-size: 0.85rem;
+    }
+
+    .task-add input[type="text"],
+    .task-add input[type="date"],
+    .task-add button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .task-add {
+        gap: 0.7rem;
+    }
+}
+
+.alert-box {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff8e1;
+    border: 1px solid #f0c36d;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+}

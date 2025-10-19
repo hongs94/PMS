@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/project_list.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>3조 Main</title>
+</head>
+<body>
+    {% include 'components/nav.html' %}
+    <main>
+    <section class="status-cards">
+    <div class="card">
+      <p>진행완료</p>
+      <h2>{{ done|length}}</h2>
+    </div>
+    <div class="card active">
+      <p>진행중</p>
+      <h2>{{ doing|length}}</h2>
+    </div>
+    <div class="card">
+      <p>진행대기</p>
+    <h2>{{ wait|length}}</h2>
+    </div>
+</section>
+<button class="add-btn" onclick="window.location.href='{{ url_for('projectAdd') }}'">＋ 프로젝트 추가</button>
+  <div class="search-bar">
+    <form method="GET" action="{{ url_for('projectList') }}" class="search-form">
+      <input type="text" class="q" name="q" placeholder="프로젝트명 / 클라이언트명 검색" value="{{ q }}">
+      <button type="submit" class="btn btn-gray">검색</button>
+    </form>
+  </div>
+  <section class="project-table">
+    <table>
+      <thead>
+        <tr>
+          <th>프로젝트명</th>
+          <th>클라이언트</th>
+          <th>담당자명</th>
+          <th>시작일</th>
+          <th>마감일</th>
+          <th>진행 상태</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in project_list %}
+          <tr>
+            <td>
+  <a href="/projectDetail/{{ project['_id'] }}">{{ project["title"] }}</a>
+</td>
+            <td>{{ project["client"] }}</td>
+            <td>{{ project["project_manager"] }}</td>
+            <td>{{ project["start_date"] or '미정' }}</td>
+            <td>{{ project["end_date"] or '미정' }}</td>
+            <td>{{ project["status"] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% set ns = namespace(start=1, end=1) %}
+    {% set ns.start = 1 if page - 2 < 1 else page - 2 %}
+    {% set ns.end = total_pages if page + 2 > total_pages else page + 2 %}
+    <div class="pagination">
+      {% if page > 1 %}
+        <a href="{{ url_for('projectList', page=1, q=q) }}">« 처음</a>
+      {% endif %}
+      {% if page > 1 %}
+        <a href="{{ url_for('projectList', page=page-1, q=q) }}">이전</a>
+      {% endif %}
+      {% for p in range(ns.start, ns.end + 1) %}
+        <a href="{{ url_for('projectList', page=p, q=q) }}"
+          class="{% if p == page %}active{% endif %}">
+          {{ p }}
+        </a>
+      {% endfor %}
+      {% if page < total_pages %}
+        <a href="{{ url_for('projectList', page=page+1, q=q) }}">다음</a>
+      {% endif %}
+      {% if page < total_pages %}
+        <a href="{{ url_for('projectList', page=total_pages, q=q) }}">끝 »</a>
+      {% endif %}
+    </div>
+    </section>
+    </main>
+    {% include 'components/footer.html' %}
+</body>
+</html>

@@ -1,0 +1,232 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0 auto;
+  color: #222;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-add,
+.btn-back {
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 12px;
+  border: none;
+  background-color: #f2f4f7;
+  cursor: pointer;
+}
+
+.member-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  table-layout: fixed;
+  text-align: center;
+  min-width: unset;
+}
+
+
+
+.member-table thead {
+  background: #f0f6fc;
+}
+
+.member-table th,
+.member-table td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 30px;
+}
+
+
+.member-table th:nth-child(5),
+.member-table td:nth-child(5) {
+  width: 300px;
+  min-width: 180px;
+}
+
+.member-table select {
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.status-dot.green {
+  background-color: #2ecc71;
+}
+
+.status-dot.red {
+  background-color: #e74c3c;
+}
+
+.btn-save {
+  background-color: #26a65b;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  margin-right: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.q {
+  width: 240px;
+  height: 38px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+body > main > form {
+  margin-bottom: 10px;
+}
+
+.member-action-box {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.member-action-box form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.status-select {
+  min-width: 80px;
+  margin-right: 4px;
+}
+
+.btn.btn-gray {
+  vertical-align: middle;
+}
+
+.alert-box.custom {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  min-width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .member-table thead {
+    display: none;
+  }
+
+  .member-table, 
+  .member-table tbody, 
+  .member-table tr, 
+  .member-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .member-table tr {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+  }
+
+  .member-table td {
+    text-align: left;
+    padding-left: 40%;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #eee;
+    white-space: normal;
+    height: auto;
+  }
+
+  .member-table td::before {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    width: 35%;
+    white-space: nowrap;
+    font-weight: bold;
+    content: attr(data-label); /* data-label 속성 값 출력 */
+    color: #555;
+  }
+
+  .status-select {
+    width: 200px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .btn-gray {
+    text-align: center;
+    width: 100px;
+  }
+}
+

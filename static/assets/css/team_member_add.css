@@ -1,0 +1,257 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0 auto;
+    color: #222;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 40px;
+    background: #fff;
+}
+
+.team-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2e2e72;
+}
+
+.main-nav a {
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 500;
+    color: #333;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logout-btn {
+    border: 1px solid #444;
+    background: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container {
+    padding: 40px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.member-form {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.member-info-box {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #efefef;
+    margin-top: 10px;
+    width: 400px;
+    height: 250px;
+}
+
+.member-info-box>p {
+    display: flex;
+    justify-content: center;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn-blue {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.btn-submit {
+    background-color: #eaf1f8;
+    color: #0b6b3c;
+    font-weight: bold;
+}
+
+.btn-cancel {
+    background-color: #f2f2f2;
+    color: red;
+    font-weight: bold;
+}
+
+.btn-add {
+    background-color: #eaf1f8;
+    color: #000000;
+    font-weight: bold;
+}
+
+.btn-remove {
+    background-color: #eaf1f8;
+    color: #000000;
+    font-weight: bold;
+}
+
+.footer {
+    background: #1e3a56;
+    color: #fff;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 20px;
+    }
+
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+    .main-nav {
+        margin-top: 10px;
+    }
+
+    .main-nav a {
+        margin: 0 10px;
+    }
+
+    .member-info-box {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-blue {
+        width: 100%;
+        margin: 5px 0;
+    }
+    }
+
+    @media screen and (max-width: 768px) {
+    .top-header {
+        padding: 10px 15px;
+    }
+
+    .team-name {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .member-info-box {
+        font-size: 14px;
+        padding: 16px;
+    }
+
+    .form-buttons {
+        gap: 8px;
+    }
+
+    .btn-blue {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    }
+
+    @media screen and (max-width: 480px) {
+    .team-name {
+        font-size: 18px;
+    }
+
+    .main-nav a {
+        display: block;
+        margin: 8px 0;
+    }
+
+    .user-info {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+
+    .member-info-box {
+        font-size: 13px;
+    }
+
+    .btn-blue {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+}
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="{{ url_for('static', filename='assets/img/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}" />
+        <link rel="stylesheet" href="../static/assets/css/notifications.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <title>알림 전체 보기</title>
+    </head>
+    <body>
+        {% include 'components/nav.html' %}
+
+        <main class="notification-list">
+        <h2>📬 알림 전체 보기</h2>
+
+        {% if notifications %}
+            <ul>
+            {% for note in notifications %}
+                <li>
+                    <div>
+                        {% if note.link %}
+                            <a href="{{ note.link }}">{{ note.message }}</a>
+                        {% else %}
+                            {{ note.message }}
+                        {% endif %}
+
+                        {% if note.created_at_kst != "시간 없음" %}
+                            <p class="notification-time">
+                                {{ note.created_at_kst.strftime('%Y-%m-%d %H:%M') }}
+                            </p>
+                        {% else %}
+                            <span class="notification-time">시간 없음</span>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+
+
+
+            {% set ns = namespace(start=1, end=1) %}
+            {% set ns.start = 1 if page - 2 < 1 else page - 2 %}
+            {% set ns.end = total_pages if page + 2 > total_pages else page + 2 %}
+
+            <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('show_notifications', page=1) }}">« 처음</a>
+                <a href="{{ url_for('show_notifications', page=page-1) }}">이전</a>
+            {% endif %}
+
+            {% for p in range(ns.start, ns.end + 1) %}
+                <a href="{{ url_for('show_notifications', page=p) }}"
+                class="{% if p == page %}active{% endif %}">{{ p }}</a>
+            {% endfor %}
+
+            {% if page < total_pages %}
+                <a href="{{ url_for('show_notifications', page=page+1) }}">다음</a>
+                <a href="{{ url_for('show_notifications', page=total_pages) }}">끝 »</a>
+            {% endif %}
+            </div>
+
+        {% else %}
+            <div class="no-notifications">알림이 없습니다.</div>
+        {% endif %}
+        </main>
+
+        {% include 'components/footer.html' %}
+    </body>
+</html>
