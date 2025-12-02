@@ -73,8 +73,6 @@ def inject_user_context():
         print(f"[inject_user_context] Error: {e}")
         return dict()
 
-
-
 # main page
 @app.route("/")
 def home():
@@ -640,7 +638,7 @@ def teamMemberDelete(project_id, member_id):
     return redirect(url_for("teamMemberManage", project_id=project_id))
 
 # project
-# ✅ 로그인 제한용 데코레이터
+# 로그인 제한용 데코레이터
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -703,7 +701,7 @@ def projectList():
                             page=page,
                             total_pages=total_pages)
 
-# ✅ 로그인 필요
+# 로그인 필요
 @app.route("/projectAdd", methods=["GET", "POST"])
 @login_required
 def projectAdd():
@@ -737,7 +735,7 @@ def projectAdd():
 
     return render_template("/project_add.html", user_list=user_list)
 
-# ✅ 로그인 필요
+# 로그인 필요
 @app.route("/projectUpdate/<project_id>", methods=["GET", "POST"])
 @login_required
 def projectUpdate(project_id):
@@ -821,7 +819,7 @@ def projectDetail(project_id):
 
     return render_template("/project_detail.html", project=project)
 
-# ✅ 로그인 필요
+# 로그인 필요
 @app.route("/projectDelete/<project_id>", methods=["POST"])
 @login_required
 def projectDelete(project_id):
@@ -829,7 +827,6 @@ def projectDelete(project_id):
     return redirect(url_for('projectList'))
 
 # timeline
-
 # 일정 타입을 CSS 클래스에 매핑
 TYPE_TAG_CLASS_MAP = {"개인": "personal-schedule-tag", "회사": "company-schedule-tag", "프로젝트": "project-schedule-tag"}
 
@@ -1276,7 +1273,7 @@ def delete_schedule():
         return jsonify({"success": False, "message": f"일정 삭제 오류: {str(e)}"}), 500
 
 # login
-# ✅ 로그인 확인 데코레이터
+# 로그인 확인 데코레이터
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -1285,7 +1282,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-# ✅ 로그인
+# 로그인
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -1301,13 +1298,13 @@ def login():
     return render_template("login.html")
 
 
-# ✅ 로그아웃
+# 로그아웃
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect(url_for("home"))
 
-# ✅ 회원가입
+# 회원가입
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -1349,7 +1346,7 @@ def signup():
 
     return render_template("signup.html")
 
-# ✅ 개인정보 수정
+# 개인정보 수정
 @app.route("/profile_edit", methods=["GET", "POST"])
 @login_required
 def profile_edit():
@@ -1384,7 +1381,7 @@ def profile_edit():
     user = user_collection.find_one({"_id": user_id})
     return render_template("profile_edit.html", user=user)
 
-# ✅ 회원탈퇴
+# 회원탈퇴
 @app.route("/delete_account", methods=["GET", "POST"])
 @login_required
 def delete_account():
